@@ -1,0 +1,467 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSPY v2004 rel. 4 U (http://www.xmlspy.com) by org (org) -->
+<xsd:schema targetNamespace="http://ez-konnect.com/v1" elementFormDefault="qualified" attributeFormDefault="qualified" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://ez-konnect.com/v1">
+	<xsd:element name="EntityResponse" type="EntityResponseType"/>
+	<xsd:complexType name="RequestGlobalIDType">
+		<xsd:annotation>
+			<xsd:documentation>
+            </xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="RequestID" type="xsd:string"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="BusinessType">
+		<xsd:annotation>
+			<xsd:documentation>
+                Definition for a Business.
+                    Consist of -
+                        Business general information
+                        Conatct information
+                        Associated linkages
+                        Associated accounts
+                        Regions the Businesss can operate
+                        The service subscription
+            </xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="BusinessGeneralInfo" type="BusinessGeneralInfoType"/>
+			<xsd:element name="BusinessContacts" type="ContactListType" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="AssociatedBusinessGeneralInfoType">
+		<xsd:annotation>
+			<xsd:documentation>
+                Definition for Business's general information.
+            </xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="BusinessGeneralInfo" type="BusinessGeneralInfoType"/>
+			<xsd:element name="MsgInfo" type="MsgInfoType" minOccurs="0"/>
+			<xsd:element name="MsgList" type="MsgListType" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="BusinessGeneralInfoType">
+		<xsd:annotation>
+			<xsd:documentation>
+                Definition for Business's general information.
+            </xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="BusinessID" type="xsd:string"/>
+			<xsd:element name="BusinessName" type="xsd:string"/>
+			<xsd:element name="BusinessAlias" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="BusinessDescription" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="BusinessCategory" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="BusinessSubCategory" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="BusinessSatus" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="Address" type="AddressType" minOccurs="0"/>
+			<xsd:element name="ContactInfo" type="ContactInfoType" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="MsgListType">
+		<xsd:annotation>
+			<xsd:documentation>
+             </xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="MsgSubject" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="MsgType" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="IsRead" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="TimeStamp" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="MsgText" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="MsgURL" type="xsd:string" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="MsgInfoType">
+		<xsd:annotation>
+			<xsd:documentation>
+             </xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="UnReadMsgs" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="ReadMsgs" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="TotalMsgs" type="xsd:string" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="ContactListType">
+		<xsd:annotation>
+			<xsd:documentation>
+               Business's Contacts. A Business can have multiple contacts
+            </xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="Contact" type="ContactType" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="ContactType">
+		<xsd:annotation>
+			<xsd:documentation>
+                Definition for Contact
+            </xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="ContactID" type="xsd:string"/>
+			<xsd:element name="Name" type="NameType" minOccurs="0"/>
+			<xsd:element name="Address" type="AddressType" minOccurs="0"/>
+			<xsd:element name="ContactInfo" type="ContactInfoType" minOccurs="0"/>
+			<xsd:element name="PreferredContactMethod" type="PreferredContactMethodType" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="RegionType">
+		<xsd:annotation>
+			<xsd:documentation>
+                Region Definition.
+                    RegionID - Unique identifier for this Region
+                    Region Name - Name/Description of the region
+                    Countries - Associated country list
+            </xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="RegionID" type="xsd:string"/>
+			<xsd:element name="RegionName" type="xsd:string"/>
+			<xsd:element name="Countries" type="CountryListType" minOccurs="0"/>
+			<xsd:element name="Comments" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="Status" type="StatusType" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="CountryListType">
+		<xsd:annotation>
+			<xsd:documentation>
+                Country type.
+            </xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="Country" type="CountryType" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="CountryType">
+		<xsd:annotation>
+			<xsd:documentation>
+                Country type.
+            </xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="CountryCode" type="xsd:string"/>
+			<xsd:element name="CountryName" type="xsd:string" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="AddressType">
+		<xsd:annotation>
+			<xsd:documentation>
+                Address Definition.
+            </xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="BuildingInfo" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="Street" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="AddressLine2" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="AddressLine3" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="City" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="State" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="Country" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="PostalCode" type="xsd:string" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="NameType">
+		<xsd:annotation>
+			<xsd:documentation>
+                Definition for name.
+            </xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="Title" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="FirstName" type="xsd:string"/>
+			<xsd:element name="MiddleName" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="LastName" type="xsd:string"/>
+			<xsd:element name="Initials" type="xsd:string" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="ContactInfoType">
+		<xsd:annotation>
+			<xsd:documentation>
+                        Contact Info definition.
+                    </xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="WorkNumber" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="HomeNumber" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="CellNumber" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="FaxNumber" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="Email" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="Telex" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="WebSite" type="xsd:string" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="SimpleValueListType">
+		<xsd:annotation>
+			<xsd:documentation>
+                Definition for configuration type.
+            </xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="SimpleValueList" type="xsd:string" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="SearchResultType">
+		<xsd:annotation>
+			<xsd:documentation>
+                User Definition.
+            </xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="SearchedCriteria" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="SearchedBusinesses" type="BusinessesListType" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="UserType">
+		<xsd:annotation>
+			<xsd:documentation>
+                User Definition.
+            </xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="UserGeneralInfo" type="UserGeneralInfoType"/>
+			<xsd:element name="AssociatedBusinessSubscriptions" type="AssociatedBusinessesListType" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="UserGeneralInfoType">
+		<xsd:annotation>
+			<xsd:documentation>
+                User to group association list.
+            </xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="UserID" type="xsd:string"/>
+			<xsd:element name="UserName" type="NameType" minOccurs="0"/>
+			<xsd:element name="Address" type="AddressType" minOccurs="0"/>
+			<xsd:element name="ContactInfo" type="ContactInfoType" minOccurs="0"/>
+			<xsd:element name="TimeZone" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="TimeZoneCode" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="UserStatus" type="StatusType" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:simpleType name="StatusType">
+		<xsd:annotation>
+			<xsd:documentation>
+                Status type.
+            </xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="Active"/>
+			<xsd:enumeration value="InActive"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="OperationStatusType">
+		<xsd:annotation>
+			<xsd:documentation>
+                Status for operation.
+            </xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="RequestSubmitted"/>
+			<xsd:enumeration value="InProgress"/>
+			<xsd:enumeration value="PartiallyCompleted"/>
+			<xsd:enumeration value="Completed"/>
+			<xsd:enumeration value="Failed"/>
+			<xsd:enumeration value="ConnFailed"/>
+			<xsd:enumeration value="InfraFailed"/>
+			<xsd:enumeration value="Rejected"/>
+			<xsd:enumeration value="Ignore"/>
+			<xsd:enumeration value="NotSubscribed"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="OperationType">
+		<xsd:annotation>
+			<xsd:documentation>
+                Supported operation type.
+            </xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="GetUserSubscriptions"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="ErrorTypeEnum">
+		<xsd:annotation>
+			<xsd:documentation>
+                Supported operation type.
+            </xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="Technical"/>
+			<xsd:enumeration value="Functional"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:complexType name="ErrorType">
+		<xsd:annotation>
+			<xsd:documentation>
+                Error Definition.
+            </xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="ErrorCode" type="xsd:string"/>
+			<xsd:element name="ErrorMessage" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="ErrorType" type="ErrorTypeEnum" minOccurs="0"/>
+			<xsd:element name="StackTrace" type="xsd:string" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="EntityRequestType">
+		<xsd:annotation>
+			<xsd:documentation>
+                The request object for provisioning
+            </xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="ActionData" type="ActionDataType" minOccurs="0"/>
+			<xsd:element name="User" type="UserType" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="EntityResponseType">
+		<xsd:annotation>
+			<xsd:documentation>
+                The response object for provisioning
+            </xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="ActionData" type="ActionDataType" minOccurs="0"/>
+			<xsd:element name="User" type="UserType" minOccurs="0"/>
+			<xsd:element name="SearchResult" type="SearchResultType" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="ActionDataType">
+		<xsd:annotation>
+			<xsd:documentation>
+                Definition for Action Data
+            </xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="RequestGlobalID" type="xsd:string"/>
+			<xsd:element name="UserAction" type="UserActionType"/>
+			<xsd:element name="UserLoginId" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="UserName" type="NameType" minOccurs="0"/>
+			<xsd:element name="UserIP" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="UserRegion" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="UserDevice" type="xsd:string" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="ErrorListType">
+		<xsd:annotation>
+			<xsd:documentation>
+                Definition for error list
+            </xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="ErrorType" type="ErrorType" minOccurs="0" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="OpValueType">
+		<xsd:annotation>
+			<xsd:documentation>
+                Definition for Function List type.
+            </xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="Operator" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="Value" type="xsd:string" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="UserActionType">
+		<xsd:annotation>
+			<xsd:documentation>
+                Definition for user action.
+            </xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="Operation" type="xsd:string"/>
+			<xsd:element name="OperationStatus" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="OperationStatusDetail" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="ErrorList" type="ErrorListType" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:simpleType name="PreferredContactMethodType">
+		<xsd:annotation>
+			<xsd:documentation>
+                Definition for Preferred contact methods.
+            </xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="WorkNumber"/>
+			<xsd:enumeration value="HomeNumber"/>
+			<xsd:enumeration value="CellNumber"/>
+			<xsd:enumeration value="FaxNumber"/>
+			<xsd:enumeration value="Email"/>
+			<xsd:enumeration value="Telex"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="WeekDays">
+		<xsd:annotation>
+			<xsd:documentation>Days of the week</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="Sunday"/>
+			<xsd:enumeration value="Monday"/>
+			<xsd:enumeration value="Tuesday"/>
+			<xsd:enumeration value="Wednesday"/>
+			<xsd:enumeration value="Thursday"/>
+			<xsd:enumeration value="Friday"/>
+			<xsd:enumeration value="Saturday"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:complexType name="SecurityContactType">
+		<xsd:annotation>
+			<xsd:documentation>
+				Definition for Security Contact
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="ContactID" type="xsd:string"/>
+			<xsd:element name="Name" type="NameType" minOccurs="0"/>
+			<xsd:element name="JobDetails" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="Address" type="AddressType" minOccurs="0"/>
+			<xsd:element name="ContactInfo" type="ContactInfoType" minOccurs="0"/>
+			<xsd:element name="PreferredContactMethod" type="PreferredContactMethodType" minOccurs="0"/>
+			<xsd:element name="Company" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="Comments" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="Status" type="StatusType" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:simpleType name="PlatformAccessType">
+		<xsd:annotation>
+			<xsd:documentation>PlatformAccess</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="iOS"/>
+			<xsd:enumeration value="Andriod"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:complexType name="WeekDaysListType">
+		<xsd:annotation>
+			<xsd:documentation>
+               List of WeekDaysListType
+            </xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="Day" type="WeekDays" maxOccurs="7"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="AssociatedBusinessesListType">
+		<xsd:annotation>
+			<xsd:documentation>
+                Definition for Service subscription list.
+            </xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="AssociatedBusinessGeneralInfo" type="AssociatedBusinessGeneralInfoType" minOccurs="0" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="BusinessesListType">
+		<xsd:annotation>
+			<xsd:documentation>
+                Definition for Service subscription list.
+            </xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="BusinessGeneralInfo" type="BusinessGeneralInfoType" minOccurs="0" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>
