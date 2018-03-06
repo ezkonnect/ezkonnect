@@ -1,0 +1,10 @@
+{
+  "main_menu": [
+    "unread",
+    "mysusbcription",
+    "deals",
+    "alerts",
+    "search",
+    "settings"
+  ]
+}

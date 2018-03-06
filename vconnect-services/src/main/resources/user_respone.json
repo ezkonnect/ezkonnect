@@ -1,0 +1,27 @@
+ {
+       "timezone": "US Eastern",
+        "title": "Mr.",
+        "firstname": "Faheem",
+        "lastname": "Jabbar",
+        "middlename": "",
+       "address": {
+        "addressLine3": "1100 Mindy Lane",
+        "addressLine2": "",
+        "city": "Edison",
+        "state": "NJ",
+        "country": "USA",
+        "postalCode": "08817"
+      },
+      "userid": 12345,
+      "contactinfo": {
+        "email": "faheemJabbar@test.com",
+        "website": "faheemjabbar.com",
+        "worknumber": "111-111-1111",
+        "cellnumber": "111-111-1111",
+        "homenumber": "111-111-1111",
+        "faxnumber": "111-111-1111"
+      },
+      "userstatus": "Active",
+      "profileimageurl":"http://vconnect.com/user-profiles/images/12345.png"
+    
+  }

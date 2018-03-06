@@ -1,0 +1,48 @@
+{
+  "subscriptionlist": [
+    {
+      "id": "1233ASD",
+      "name": "Rose Pizza",
+      "punchline": "We are best pizza in town",
+      "logourl": "http://vconnect.com/logos/1233ASD",
+      "msgsummary": {
+        "totalmsgs": "2",
+        "readmsgs": "1",
+        "unreadmsgs": "1"
+      }
+    },
+    {
+      "id": "12354dfdfddf",
+      "name": "Dr Martin",
+      "Punch_line": "Your primary health careres",
+      "logourl": "http://vconnect.com/logos/12354dfdfddf",
+      "msgsummary": {
+        "totalmsgs": "2",
+        "readmsgs": "1",
+        "unreadmsgs": "1"
+      }
+    },
+    {
+      "id": "12354df2345ft",
+      "name": "Pizza hut",
+      "punchline": "Healthy choice in Pizza",
+       "logourl": "http://vconnect.com/logos/12354df2345ft",
+      "msgsummary": {
+        "totalmsgs": "2",
+        "readmsgs": "1",
+        "unreadmsgs": "1"
+      }
+    },
+    {
+      "id": "12354dfdfddf",
+      "name": "Dr Martin",
+      "punchline": "Your primary health careres",
+       "logourl": "http://vconnect.com/logos/12354dfdfddf",
+      "msgsummary": {
+        "totalmsgs": "2",
+        "readmsgs": "1",
+        "unreadmsgs": "1"
+      }
+    }
+  ]
+}
