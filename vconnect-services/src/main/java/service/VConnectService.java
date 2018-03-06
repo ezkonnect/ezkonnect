@@ -1,6 +1,12 @@
 package service;
 
+import com.twilio.sdk.TwilioRestClient;
+import com.twilio.sdk.TwilioRestException;
 import java.io.BufferedReader;
+import com.twilio.Twilio;
+import com.twilio.rest.api.v2010.account.Message;
+import com.twilio.type.PhoneNumber;
+
 import java.io.FileInputStream;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -26,14 +32,109 @@ public class VConnectService implements CommandLineRunner {
 	
 	public static String sampleResponsePayload = "";
 	
+	@Value("${ACCOUNT_SID}")
+	public String ACCOUNT_SID = "";
+	
+	@Value("${AUTH_TOKEN}")
+	public String AUTH_TOKEN = "";
+	
 	@Value("${sample.xml.location}")
 	private String sampleFileLocation;
 	
+	@Value("${businessdetail.json.location}")
+	private String businessdetailFileLoc;
+	
+	@Value("${businessmsgs.json.location}")
+	private String businessmsgsFileLoc;
+	
+	@Value("${userresponse.json.location}")
+	private String userresponseFileLoc;
+	
+	@Value("${pendingsubs.json.location}")
+	private String pendingsubsFileLoc;
+	
+	@Value("${subscription.json.location}")
+	private String subsFileLoc;
+	
+	@Value("${mainmenu.json.location}")
+	private String mainFileLoc;
+	
+	@Value("${authentication.json.location}")
+	private String authenticationFileLoc;
+	
+	@Value("${verification.json.location}")
+	private String verificationFileLoc;
+		
 	@Override
 	public void run(String... arg0) throws Exception {
 		// TODO Auto-generated method stub
 		System.out.println ("Sample File Location.." + sampleFileLocation);	
 		loadFile ();
+	}
+	
+	
+	public String sendSms (String phoneNumber) {
+		System.out.println ("Phone_Number.." + phoneNumber);	
+		System.out.println ("ACCOUNT_SID.." + ACCOUNT_SID);	
+		System.out.println ("AUTH_TOKEN.." + AUTH_TOKEN);
+		
+		Twilio.init(ACCOUNT_SID, AUTH_TOKEN);
+
+	    Message message = Message.creator(new PhoneNumber(phoneNumber),
+	        new PhoneNumber("+18563176791"), 
+	        "vConnect Tiwilo Integration in Progress..").create();
+	    
+		return message.getSid();	
+
+	}
+	
+	
+	public String authenticateUser (String phoneNumber) {
+		return loadJsonFile (authenticationFileLoc);
+		
+		/*
+		System.out.println ("Phone_Number.." + phoneNumber);	
+		System.out.println ("ACCOUNT_SID.." + ACCOUNT_SID);	
+		System.out.println ("AUTH_TOKEN.." + AUTH_TOKEN);
+		
+		Twilio.init(ACCOUNT_SID, AUTH_TOKEN);
+
+	    Message message = Message.creator(new PhoneNumber(phoneNumber),
+	        new PhoneNumber("+18563176791"), 
+	        "vConnect Tiwilo Integration in Progress..").create();
+	    
+	    //System.out.println();
+		
+		return message.getSid();	
+		*/
+	}
+	
+	public String verifyToken (String id) {
+		return loadJsonFile (verificationFileLoc);	
+	}
+	
+	public String getMainMenuResponse (String id) {
+		return loadJsonFile (mainFileLoc);	
+	}
+	
+	public String getSubscriptionsResponse (String id) {
+		return loadJsonFile (subsFileLoc);	
+	}
+	
+	public String getUserResponse (String id) {
+		return loadJsonFile (userresponseFileLoc);	
+	}
+	
+	public String getBusinessMsgs (String id) {
+		return loadJsonFile (businessmsgsFileLoc);	
+	}
+	
+	public String getBusinessDetail (String id) {
+		return loadJsonFile (businessdetailFileLoc);	
+	}
+	
+	public String getPendingSubs (String id) {
+		return loadJsonFile (pendingsubsFileLoc);	
 	}
 	
 	public ResponsePayLoad processRequest (String  id) {
@@ -109,6 +210,10 @@ public class VConnectService implements CommandLineRunner {
 	     return res;
     }
     
+    private String loadJsonFile (String fileLoc) {
+       	return getFileContent (fileLoc);     	   
+    }
+    
     private void loadFile () {
          	
        	String xml = getFileContent (sampleFileLocation);     	   
@@ -164,6 +269,8 @@ public class VConnectService implements CommandLineRunner {
        	}
        	return "";
     	}
+    
+    
     
    
 }

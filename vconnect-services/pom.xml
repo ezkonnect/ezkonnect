@@ -80,6 +80,18 @@
 		  <version>20171018</version>
 		</dependency>
 		
+		<dependency>
+  <groupId>com.twilio.sdk</groupId>
+  <artifactId>twilio</artifactId>
+  <version>7.17.0</version>
+</dependency>
+		
+<dependency>
+  <groupId>com.twilio.sdk</groupId>
+  <artifactId>twilio-java-sdk</artifactId>
+  <version>6.3.0</version>
+</dependency>
+        
 	</dependencies>
 
 	<build>
